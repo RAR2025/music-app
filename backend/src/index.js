@@ -10,7 +10,7 @@ import songsRoutes from "./routes/song.route.js"
 dotenv.config();
 const app = express();
 const port = process.env.Port;
-
+app.use(express.json())
 app.use("/api/users", userRoutes);
 app.use("/api/songs", songsRoutes);
 app.use("/api/auth", authRoutes);
