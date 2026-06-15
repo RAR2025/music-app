@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { getAdmin } from "../controller/admin.controller.js";
 import {User} from "../models/user.model.js"
 import { authCallback } from "../controller/auth.controller.js";
 
