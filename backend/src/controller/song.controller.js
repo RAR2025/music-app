@@ -9,6 +9,72 @@ export const getAllSongs = async (req, res, next) => {
     }
 }
 
-export const getFeaturedSongs = async (req, res, next) => {}
-export const getmadeforyou = async (req, res, next) => {}
-export const gettrending = async (req, res, next) => {}
+export const getFeaturedSongs = async (req, res, next) => {
+    try {
+        const songs = await Song.find.aggregate([
+            {
+                $sample: {size:6}
+            },
+            {
+                $project: {
+                    _id: 1,
+                    title: 1,
+                    artist: 1,
+                    imageUrl: 1,
+                    audioUrl: 1,
+                }
+            }
+        ])
+
+        res.json(sort)
+
+    } catch (error) {
+        next(error);
+    }
+}
+export const getmadeforyou = async (req, res, next) => {
+    try {
+        const songs = await Song.find.aggregate([
+            {
+                $sample: {size:4}
+            },
+            {
+                $project: {
+                    _id: 1,
+                    title: 1,
+                    artist: 1,
+                    imageUrl: 1,
+                    audioUrl: 1,
+                }
+            }
+        ])
+
+        res.json(sort)
+
+    } catch (error) {
+        next(error);
+    }
+}
+export const gettrending = async (req, res, next) => {
+    try {
+        const songs = await Song.find.aggregate([
+            {
+                $sample: {size:4}
+            },
+            {
+                $project: {
+                    _id: 1,
+                    title: 1,
+                    artist: 1,
+                    imageUrl: 1,
+                    audioUrl: 1,
+                }
+            }
+        ])
+
+        res.json(sort)
+
+    } catch (error) {
+        next(error);
+    }
+}
