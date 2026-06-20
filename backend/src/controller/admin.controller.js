@@ -104,7 +104,7 @@ export const createAlbum= async (req, res, next) => {
 };
 
 
-export const deleteAblum = async (req, res, next) => {
+export const deleteAlbum = async (req, res, next) => {
     try {
         const {id} = req.params;
         const album = await Album.findById(id);
